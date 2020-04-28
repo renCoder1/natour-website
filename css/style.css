@@ -648,7 +648,7 @@ body {
     hyphens: auto; }
 
 .header {
-  /*on every viewport height should be 95 % of that particular viewport height*/
+ 
   height: 85vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
@@ -656,17 +656,17 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   position: relative;
-  /* width should be in em tried and tested 1em is always - 16px not affected by root font size like 1rem we set to 10px for easy calculation */
-  /* h1 is the single most imp heading used for google page to know what our page is about, we cant have two */
-  /*  a line break before and after them when u make it block level */ }
+ }
   @supports (clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%)) or (-webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%)) {
     .header {
       clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
       height: 95vh; } }
+/* 
+rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)*/
   @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
     .header {
-      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)), url(../img/hero.jpg); } }
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
   @media only screen and (max-width: 75em) {
     .header {
       clip-path: polygon(0 0, 100% 0, 100% 86vh, 0 100%);
