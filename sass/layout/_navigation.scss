@@ -1,0 +1,188 @@
+.navigation{
+
+
+  &__checkbox{
+  display: none;
+  //transition: all .7s;
+  }
+  
+  &__button{
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  position: fixed;
+  right:6rem;
+  top:6rem;
+  background-color:$color-white;
+  z-index: 3000;
+  text-align: center;
+  box-shadow: 0 1rem 3rem $color-box-shadow-dark;
+    cursor: pointer;
+
+    @include respond(tab-port){
+    top:3rem;
+    right:3rem;
+    }
+  }
+
+  &__background{
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  position: fixed;
+  right: 6.5rem;
+  top:6.5rem;
+  background-image: radial-gradient($color-primary-light,$color-primary-dark);
+  z-index: 1500;
+   transition: transform .9s;
+   //cubic-bezier(0.86, 0,0.07, 1);
+   @include respond(tab-port){
+    top:3.5rem;
+    right:3.5rem;
+    }
+  }
+
+
+  &__nav{
+   height: 100vh;
+  // width:100%; //not necessary though
+   position: fixed; //always stays while scrolling
+   top:0;
+   right:0;
+   //background-image: radial-gradient(90%, $color-primary-light,$color-primary-dark);
+   z-index:1600;
+   opacity: 0;
+   width:0;//so that pointer doesn't point
+   transition: all .8s cubic-bezier(0.07, 0, 0.07, 1); 
+   
+  }
+
+  &__list{
+  //ul
+   width:100%;
+   // margin: 1rem;
+   list-style: none;
+   position: absolute;
+   left:50%;
+   top:50%;
+   transform: translate(-50%,-50%);
+   text-align: center; //so that middle of its ul  
+
+  }
+
+  &__item{
+    //li
+    margin:1rem; 
+  
+    span{
+        margin-right: 1.4rem;
+        }
+  }
+
+  &__link{
+      &:visited,
+      &:link{
+        //a
+        font-size: 3rem;
+        font-weight: 300;
+        color:$color-white; 
+        text-decoration: none;
+        text-transform: uppercase;
+        display: inline-block;
+        padding:1rem 1.5rem;
+        background-image: linear-gradient(120deg, transparent 0%,transparent 50%,$color-white 50%);
+        background-size: 220%;
+        transition: all .4s;
+        //background-position .6s, translateX .4s;
+        //color .2s, text-shadow .2s;
+    
+   
+    }
+    &:hover,
+    &:active{
+        background-position: 100%;
+        transform: translateX(1rem);   
+        color: $color-primary-dark; 
+    } 
+  }
+      
+  &__checkbox:checked ~ &__background{
+    transform: scale(60);
+   
+  }
+  &__checkbox:checked ~ &__nav{
+    //left:0;
+    opacity: 1;
+    width: 100%;
+  
+  } 
+  //ICON 
+
+  &__icon{
+   margin-top: 3.5rem;
+   position: relative;
+   &,
+   &::before,
+   &::after{
+       width:3rem;
+       height: 2px;
+       background-color:$color-grey-dark;
+       display: inline-block;
+     
+   }
+  
+   &::after,
+   &::before{
+    content: "";
+    position: absolute;
+    left:0;
+    transition: all .3s;
+
+  
+   }
+   
+   &::after{
+    top:0.8rem;
+   }
+   &::before{
+    top:-0.8rem;
+    // transform-origin: right; center of rotation is right side of element
+
+   }
+    
+  }
+
+  &__button:hover  &__icon::after{
+    
+    top:1rem;
+
+  }
+  &__button:hover &__icon::before{
+    top:-1rem;
+  }
+
+  &__checkbox:checked + &__button &__icon{
+      
+    background-color: transparent;
+  
+  }
+
+  &__checkbox:checked + &__button &__icon::after{
+    top:0;  
+  transform: rotate(135deg);
+  }
+ 
+   &__checkbox:checked + &__button &__icon::before{
+      top:0;
+      transform: rotate(-135deg);
+  }
+} 
+
+
+
+
+//inline cant set height and width
+//occupies as much space as its size
+//cant set top and bottom margin
+
+//inline-block width and height can be set doesnt have to start on new line

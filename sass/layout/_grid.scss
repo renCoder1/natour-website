@@ -1,0 +1,70 @@
+//grid
+
+.row{
+    max-width: 114rem; //max-width is 114rem maximum, is screen size is smaller it will be whatever the screen size
+    margin: 0 auto;
+    @include clearfix;
+    &:not(:last-child){
+    }
+
+    @include respond(tab-port){
+    max-width: 50rem;
+
+    }
+    
+}
+
+[class^="col-"]{
+    float: left;
+    // background-color:$color-grey-medium;
+    &:not(:last-child){
+        margin-right: $horizontal-gutter;
+    }
+
+    @include respond(tab-port){
+        width: 100% !important;
+        margin-bottom: 5rem;
+        margin-right: 0;
+
+        &:not(:last-child){
+            margin-bottom: 10rem;
+        }
+    }
+   
+}
+.col-1-of-2{
+    width: calc((100% - #{$horizontal-gutter})/2); //100% of parent container width
+    
+}
+
+.col-1-of-3{
+    width:calc((100% - 2*#{$horizontal-gutter})/3);
+    // @include respond(tab-port){
+    //     padding-bottom: 
+    //     &:not(:last-child){
+    //         padding-bottom: 10rem;
+    //     }
+      
+    //     }
+}
+
+.col-2-of-3{
+    width :calc((2 * ((100% - 2 * #{$horizontal-gutter})/3)) + #{$horizontal-gutter});
+}
+
+.col-1-of-4{
+    width: calc((100% - 3 * #{$horizontal-gutter})/4);
+
+    // @include respond(tab-port){
+    // width: 80%;
+    // float: none;
+    // }
+}
+
+.col-2-of-4{
+    width:calc((2 * ((100% - 3 * #{$horizontal-gutter})/4)) + #{$horizontal-gutter});
+}
+
+.col-3-of-4{
+    width:calc((3 * ((100% - 3 * #{$horizontal-gutter})/4)) + 2 * #{$horizontal-gutter});
+}

@@ -1,0 +1,121 @@
+.review {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem $color-box-shadow-medium;
+  background-color: $color-white;
+  background-color: rgba($color-white,0.5);
+  color: $color-grey;
+  border-radius: 3px;
+  padding: 4rem 6rem;
+  padding-left: 7rem; //as we transform shape towards left so padding decreased on left side see inspect element comment this code
+  font-size: 1.6rem;
+  transform: skewX(-12deg);
+  
+
+  margin-bottom: 8rem;
+  //all direct child but doesn't work as translation takes precedence two type of transform going on so only translation applies not skew
+  //   & > *{
+  //     transform: skewX(-12deg);
+  //   }
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    //background-color: aquamarine;
+    float: left;
+    position: relative;
+
+    
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+   
+ 
+   @supports (clip-path:circle(50% at 50% 50%)) or (-webkit-clip-path: circle(50% at 50% 50%)){
+    clip-path: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    overflow: hidden;
+   
+   }
+    //size of the circle, radius (50% means hold the height of 15rem i.e 7.5 radius)and position of center of circle x y horizontally and vertically shape outside work when element is floated and has defined dimention width and height
+    //Best way to move around a float element means to give space not margin and padding but translateX
+    transform: translateX(-3rem) skewX(12deg);
+    // transform: skewX(12deg);
+   
+  }
+  &__img {
+    height: 100%;
+    transform: translateX(-3rem) scale(1.4); ;
+    transition: all .4s;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+  
+  &__caption {
+    font-size: 1.7rem;
+    color:$color-white;
+    opacity: 1;
+    transition: all .6s;
+    text-align: center;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    transform: translateY(-9.4rem);
+  }
+  
+  &:hover &__img{
+    transform: translateX(-3rem) scale(1); 
+    filter: blur(0.2rem) brightness(70%);
+   
+    
+  }
+
+  
+}
+   
+// max-width: 114rem;
+//     width:50%;
+
+// “Whether a thought is spoken or not, it is a real thing and has powers of reality.” Frank Herbert
+
+// another way to make circle
+// &__img{
+//     width: 22%;
+//     height:80%;
+//     transform: skewx(20deg) scaleY(1.4);
+//     border-radius: 50%;
+//     float: left;
+
+// }
+
+// &__text{
+//     padding-left: 22rem; //from left margin of div
+//     transform: skewx(20deg);
+// }
+@include respond(tab-port){
+
+    .review { 
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+    
+    transform: skewX(0);
+
+    &__shape {
+      transform: translateX(-3rem) skewX(0);
+
+     // padding-left:2rem;
+    }
+    
+    &__text {
+      transform: skewX(0);
+     
+      
+    }
+    
+    }
+
+  
+  
+}

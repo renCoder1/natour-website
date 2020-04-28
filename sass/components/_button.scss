@@ -1,0 +1,98 @@
+// button
+
+.btn{
+    &, &:link, &:visited {
+        font-size: 1.6rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1rem 2rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: transform .2s;
+        position: relative;
+        //for button
+        border: none;
+        cursor: pointer;
+     }
+    &:hover {
+        transform: translateY(-0.4rem);
+        box-shadow: 0 1rem 2rem $color-box-shadow-light;
+        &::after {
+            /* content:""; */
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+            /* inc and then disappear */ }
+          
+    }
+    &:active, &:focus {
+        outline: none; //for screen readers below and on &:focus  outline removed
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.7rem 1rem $color-box-shadow-dark;
+
+    }
+      
+    &--white {
+        background-color:$color-white;
+        color: $color-grey; 
+        &::after {
+            background-color:$color-white; 
+        }
+    }
+    
+    &--green{
+        background-color:$color-primary;
+        color: $color-white; 
+        &::after {
+            background-color:$color-primary; 
+        }
+    }
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        /* so that not all button has this effect we created another class  .2 sec delay for animation to start*/
+        animation-fill-mode: backwards;
+        /* this will apply 0% property before the start of animation so btn will be initially hidden , we can put this btn invisible in beginning bt we dont want the btn to have that property so that bt cann be re-used */ 
+    }
+      
+    &::after {
+        content: "";
+        display: inline-block;
+        /* because btn is also inline */
+        width: 100%;
+        height: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s; 
+    }    
+}
+
+
+.btn-text{
+
+    &:link,
+    &:visited{
+        font-size: 1.6rem;
+        color:$color-primary;
+        text-decoration: none;
+        display:inline-block;
+        padding:0.5rem 1rem;
+        border-bottom: 1px solid $color-primary;
+        transition: all .2s;
+    }
+
+    &:hover{
+      
+        background-color: $color-primary;
+        color:$color-white;
+        box-shadow: 0 1rem 1.5rem $color-box-shadow-medium;
+        transform: translateY(-2px);
+    }
+
+    &:active{
+        transform: translateY(2px);
+        box-shadow: 0 0.5rem 1rem $color-box-shadow-dark;
+    }
+
+}

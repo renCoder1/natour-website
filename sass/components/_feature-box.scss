@@ -1,0 +1,33 @@
+.feature-box{
+    font-size: 1.5rem;
+    text-align: center;
+   // background: rgba($color-white,0.8);
+   background:rgba($color-white,0.8);
+    padding:2.5rem;
+    box-shadow: 0 2rem 2rem $color-box-shadow-medium;
+    border-radius:3px;
+    transition: all .8s;
+    @include respond(phone){
+     padding: 2rem 0 4rem;
+     
+    }
+    &__icon{
+    
+     font-size: 6rem;
+     padding-top:2rem; //to avoid clipping of icon else make it inline-block
+    // display: inline-block;
+     background-image: linear-gradient(to right bottom, $color-primary-light,$color-primary-dark);
+     -webkit-background-clip: text;
+     color:transparent;
+    
+
+    }
+
+    &:hover{
+        transform: translateY(-2rem);   
+    }
+
+    &__text{
+
+    }
+}
